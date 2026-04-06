@@ -99,7 +99,6 @@ gcc recipe_graph.c -o recipe_graph
 --![2 c](https://github.com/user-attachments/assets/236218eb-602d-4f78-9944-f54a3a202ec8)
 3.
 ![2 c](https://github.com/user-attachments/assets/8caef78e-b9e8-4fcd-ad5e-346087bc1f36)
-4.
-<img width="1920" height="1080" alt="Screenshot 2026-04-06 225611" src="https://github.com/user-attachments/assets/25d76581-bd7f-4e1f-b73e-f041448d6151" />
+
   
 ## 🎥 Demo Video Link
