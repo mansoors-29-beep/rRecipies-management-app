@@ -4,6 +4,7 @@
  ##Team Members
 
 1.Shaik Abdul Azeez
+
 2.Syed Mansoor
 
 #Problem Statement
@@ -99,6 +100,9 @@ gcc recipe_graph.c -o recipe_graph
 --![2 c](https://github.com/user-attachments/assets/236218eb-602d-4f78-9944-f54a3a202ec8)
 3.
 ![2 c](https://github.com/user-attachments/assets/8caef78e-b9e8-4fcd-ad5e-346087bc1f36)
-
+4.
+<img width="686" height="821" alt="image" src="https://github.com/user-attachments/assets/8eb99760-8333-4a79-8c01-cabfb18b8952" />
+5.
+<img width="1457" height="831" alt="image" src="https://github.com/user-attachments/assets/e156233e-a8b4-41c1-abd8-fa23bf8e442a" />
   
 ## 🎥 Demo Video Link
