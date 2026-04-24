@@ -1,173 +1,124 @@
+//Home Recipe management system
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX 50
-
-// Node structure
-struct Node {
+// Structure for Recipe
+struct Recipe {
     int id;
     char name[50];
-    struct Node* next;
+    char ingredients[100];
+    struct Recipe* next;
 };
 
-// Graph structure
-struct Graph {
-    struct Node* adjList[MAX];
-    int visited[MAX];
-};
+struct Recipe* head = NULL;
 
-// Create graph
-struct Graph* createGraph() {
-    struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
-    for (int i = 0; i < MAX; i++) {
-        graph->adjList[i] = NULL;
-        graph->visited[i] = 0;
-    }
-    return graph;
-}
-
-// Create node
-struct Node* createNode(int id, char name[]) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->id = id;
-    strcpy(newNode->name, name);
-    newNode->next = NULL;
-    return newNode;
-}
-
-// Add edge (optional - recipe relation)
-void addEdge(struct Graph* graph, int src, int dest, char name[]) {
-    struct Node* newNode = createNode(dest, name);
-    newNode->next = graph->adjList[src];
-    graph->adjList[src] = newNode;
-}
-
-// Add recipe
-void addNode(struct Graph* graph) {
-    int id;
-    char name[50];
+// Add Recipe
+void addRecipe() {
+    struct Recipe* newNode = (struct Recipe*)malloc(sizeof(struct Recipe));
 
     printf("Enter Recipe ID: ");
-    scanf("%d", &id);
+    scanf("%d", &newNode->id);
 
     printf("Enter Recipe Name: ");
-    scanf("%s", name);
+    scanf(" %[^\n]", newNode->name);
 
-    graph->adjList[id] = createNode(id, name);
+    printf("Enter Ingredients: ");
+    scanf(" %[^\n]", newNode->ingredients);
 
-    printf("Recipe added successfully!\n");
+    newNode->next = head;
+    head = newNode;
+
+    printf(" Recipe Added Successfully!\n");
 }
 
-// Display recipes
-void display(struct Graph* graph) {
-    printf("\n--- Home Recipe Management ---\n");
-    for (int i = 0; i < MAX; i++) {
-        if (graph->adjList[i] != NULL) {
-            struct Node* temp = graph->adjList[i];
-            printf("[%d] %s -> ", i, temp->name);
+// Display Recipes
+void displayRecipes() {
+    struct Recipe* temp = head;
 
-            temp = temp->next;
-            while (temp) {
-                printf("%s -> ", temp->name);
-                temp = temp->next;
-            }
-            printf("NULL\n");
-        }
+    if (temp == NULL) {
+        printf("No recipes available.\n");
+        return;
+    }
+
+    printf("\n--- Recipe List ---\n");
+    while (temp != NULL) {
+        printf("\nID: %d", temp->id);
+        printf("\nName: %s", temp->name);
+        printf("\nIngredients: %s\n", temp->ingredients);
+        temp = temp->next;
     }
 }
 
-// Search recipe
-void searchNode(struct Graph* graph) {
+// Search Recipe
+void searchRecipe() {
     int id;
     printf("Enter Recipe ID to search: ");
     scanf("%d", &id);
 
-    if (graph->adjList[id] != NULL) {
-        printf("Recipe Found: %s\n", graph->adjList[id]->name);
-    } else {
-        printf("Recipe not found!\n");
+    struct Recipe* temp = head;
+    while (temp != NULL) {
+        if (temp->id == id) {
+            printf("\nFound Recipe:\n");
+            printf("Name: %s\n", temp->name);
+            printf("Ingredients: %s\n", temp->ingredients);
+            return;
+        }
+        temp = temp->next;
     }
+
+    printf(" Recipe not found.\n");
 }
 
-// Update recipe
-void updateNode(struct Graph* graph) {
-    int id;
-    char newName[50];
-
-    printf("Enter Recipe ID to update: ");
-    scanf("%d", &id);
-
-    if (graph->adjList[id] != NULL) {
-        printf("Enter new Recipe Name: ");
-        scanf("%s", newName);
-        strcpy(graph->adjList[id]->name, newName);
-        printf("Recipe updated!\n");
-    } else {
-        printf("Recipe not found!\n");
-    }
-}
-
-// Delete recipe
-void deleteNode(struct Graph* graph) {
+// Delete Recipe
+void deleteRecipe() {
     int id;
     printf("Enter Recipe ID to delete: ");
     scanf("%d", &id);
 
-    if (graph->adjList[id] != NULL) {
-        struct Node* temp = graph->adjList[id];
-        struct Node* next;
+    struct Recipe *temp = head, *prev = NULL;
 
-        while (temp) {
-            next = temp->next;
-            free(temp);
-            temp = next;
-        }
-
-        graph->adjList[id] = NULL;
-        printf("Recipe deleted successfully!\n");
-    } else {
-        printf("Recipe not found!\n");
+    while (temp != NULL && temp->id != id) {
+        prev = temp;
+        temp = temp->next;
     }
+
+    if (temp == NULL) {
+        printf(" Recipe not found.\n");
+        return;
+    }
+
+    if (prev == NULL)
+        head = temp->next;
+    else
+        prev->next = temp->next;
+
+    free(temp);
+    printf(" Recipe deleted successfully!\n");
 }
 
-// Main menu
+// Main Menu
 int main() {
-    struct Graph* graph = createGraph();
     int choice;
 
     while (1) {
-        printf("\n===== Home Recipe Management System =====\n");
+        printf("\n--- Home Recipe Management ---\n");
         printf("1. Add Recipe\n");
-        printf("2. Delete Recipe\n");
-        printf("3. Update Recipe\n");
-        printf("4. Search Recipe\n");
-        printf("5. Display Recipes\n");
-        printf("6. Exit\n");
+        printf("2. Display Recipes\n");
+        printf("3. Search Recipe\n");
+        printf("4. Delete Recipe\n");
+        printf("5. Exit\n");
+
         printf("Enter choice: ");
         scanf("%d", &choice);
 
         switch (choice) {
-            case 1:
-                addNode(graph);
-                break;
-            case 2:
-                deleteNode(graph);
-                break;
-            case 3:
-                updateNode(graph);
-                break;
-            case 4:
-                searchNode(graph);
-                break;
-            case 5:
-                display(graph);
-                break;
-            case 6:
-                printf("Exiting...\n");
-                exit(0);
-            default:
-                printf("Invalid choice!\n");
+            case 1: addRecipe(); break;
+            case 2: displayRecipes(); break;
+            case 3: searchRecipe(); break;
+            case 4: deleteRecipe(); break;
+            case 5: exit(0);
+            default: printf("Invalid choice!\n");
         }
     }
 
