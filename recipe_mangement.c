@@ -8,7 +8,7 @@
 struct Node {
     int id;
     char name[50];
-    struct Node* next; // for adjacency list
+    struct Node* next;
 };
 
 // Graph structure
@@ -36,32 +36,32 @@ struct Node* createNode(int id, char name[]) {
     return newNode;
 }
 
-// Add edge (ingredient relation)
+// Add edge (optional - recipe relation)
 void addEdge(struct Graph* graph, int src, int dest, char name[]) {
     struct Node* newNode = createNode(dest, name);
     newNode->next = graph->adjList[src];
     graph->adjList[src] = newNode;
 }
 
-// Add node
+// Add recipe
 void addNode(struct Graph* graph) {
     int id;
     char name[50];
 
-    printf("Enter node ID: ");
+    printf("Enter Recipe ID: ");
     scanf("%d", &id);
 
-    printf("Enter node name: ");
+    printf("Enter Recipe Name: ");
     scanf("%s", name);
 
     graph->adjList[id] = createNode(id, name);
 
-    printf("Node added successfully!\n");
+    printf("Recipe added successfully!\n");
 }
 
-// Display graph
+// Display recipes
 void display(struct Graph* graph) {
-    printf("\n--- Ingredient Graph ---\n");
+    printf("\n--- Home Recipe Management ---\n");
     for (int i = 0; i < MAX; i++) {
         if (graph->adjList[i] != NULL) {
             struct Node* temp = graph->adjList[i];
@@ -77,41 +77,41 @@ void display(struct Graph* graph) {
     }
 }
 
-// Search node
+// Search recipe
 void searchNode(struct Graph* graph) {
     int id;
-    printf("Enter ID to search: ");
+    printf("Enter Recipe ID to search: ");
     scanf("%d", &id);
 
     if (graph->adjList[id] != NULL) {
-        printf("Node Found: %s\n", graph->adjList[id]->name);
+        printf("Recipe Found: %s\n", graph->adjList[id]->name);
     } else {
-        printf("Node not found!\n");
+        printf("Recipe not found!\n");
     }
 }
 
-// Update node
+// Update recipe
 void updateNode(struct Graph* graph) {
     int id;
     char newName[50];
 
-    printf("Enter ID to update: ");
+    printf("Enter Recipe ID to update: ");
     scanf("%d", &id);
 
     if (graph->adjList[id] != NULL) {
-        printf("Enter new name: ");
+        printf("Enter new Recipe Name: ");
         scanf("%s", newName);
         strcpy(graph->adjList[id]->name, newName);
-        printf("Node updated!\n");
+        printf("Recipe updated!\n");
     } else {
-        printf("Node not found!\n");
+        printf("Recipe not found!\n");
     }
 }
 
-// Delete node
+// Delete recipe
 void deleteNode(struct Graph* graph) {
     int id;
-    printf("Enter ID to delete: ");
+    printf("Enter Recipe ID to delete: ");
     scanf("%d", &id);
 
     if (graph->adjList[id] != NULL) {
@@ -125,24 +125,24 @@ void deleteNode(struct Graph* graph) {
         }
 
         graph->adjList[id] = NULL;
-        printf("Node deleted successfully!\n");
+        printf("Recipe deleted successfully!\n");
     } else {
-        printf("Node not found!\n");
+        printf("Recipe not found!\n");
     }
 }
 
-// Menu
+// Main menu
 int main() {
     struct Graph* graph = createGraph();
     int choice;
 
     while (1) {
-        printf("\n===== Recipe Ingredient Graph =====\n");
-        printf("1. Add Node\n");
-        printf("2. Delete Node\n");
-        printf("3. Update Node\n");
-        printf("4. Search\n");
-        printf("5. Display\n");
+        printf("\n===== Home Recipe Management System =====\n");
+        printf("1. Add Recipe\n");
+        printf("2. Delete Recipe\n");
+        printf("3. Update Recipe\n");
+        printf("4. Search Recipe\n");
+        printf("5. Display Recipes\n");
         printf("6. Exit\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
