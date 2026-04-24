@@ -47,17 +47,15 @@ Each recipe or ingredient is represented as a **node**, and relationships betwee
 * Print each node and its connected ingredients
 
 
-### 3. Update
-
-* Search node by ID
-* Modify the node name using `strcpy`
-
-### 4. Delete
+### 3. delete
 
 * Locate node
 * Free all linked nodes using `free`
 * Remove reference from graph
 
+### 4. update
+* Search node by ID
+* Modify the node name using `strcpy`
 ### 5. Search
 
 * Check if node exists in adjacency list
