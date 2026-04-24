@@ -1,5 +1,5 @@
-# rRecipies-management-app
-# Recipe Ingredient Graph CRUD (C Project)
+# Home Recipies-management-app
+# Home Recipe Ingredient Graph CRUD (C Project)
 
  ##Team Members
 
