@@ -10,7 +10,7 @@
 #Problem Statement
 
 Managing recipes and their ingredients efficiently is important in food applications.
-This project implements a **Recipe Ingredient Management System** using a **Graph Data Structure** in C.
+This project implements a **Home Recipe  Management System** using a **Graph Data Structure** in C.
 
 Each recipe or ingredient is represented as a **node**, and relationships between them are represented as **edges**. The system supports full **CRUD operations** (Create, Read, Update, Delete) along with search functionality.
 ## 🧠 Data Structure Used
@@ -94,15 +94,16 @@ gcc recipe_graph.c -o recipe_graph
 ## 📋 Sample Output
 
 1.main menu
-<img width="1641" height="733" alt="111" src="https://github.com/user-attachments/assets/5c8787f2-1eb0-4cec-aff5-6f5c458188a9" />
-
+<img width="403" height="208" alt="Screenshot 2026-04-24 210807" src="https://github.com/user-attachments/assets/967bf385-2f8c-4a85-9618-4b99c0a26e55" />
 2.
---![2 c](https://github.com/user-attachments/assets/236218eb-602d-4f78-9944-f54a3a202ec8)
+<img width="475" height="300" alt="Screenshot 2026-04-24 210924" src="https://github.com/user-attachments/assets/632a1455-87a6-49ba-b221-560ceae6c9cb" />
 3.
-![2 c](https://github.com/user-attachments/assets/8caef78e-b9e8-4fcd-ad5e-346087bc1f36)
+<img width="480" height="341" alt="Screenshot 2026-04-24 210935" src="https://github.com/user-attachments/assets/68fca8c5-8b20-4070-97c6-73c44e8a858a" />
 4.
-<img width="686" height="821" alt="image" src="https://github.com/user-attachments/assets/8eb99760-8333-4a79-8c01-cabfb18b8952" />
+<img width="426" height="317" alt="Screenshot 2026-04-24 210949" src="https://github.com/user-attachments/assets/1a3a53c8-539e-40c6-ab8f-830b6615bb25" />
 5.
-<img width="1457" height="831" alt="image" src="https://github.com/user-attachments/assets/e156233e-a8b4-41c1-abd8-fa23bf8e442a" />
-  
+<img width="432" height="257" alt="Screenshot 2026-04-24 211001" src="https://github.com/user-attachments/assets/a3db9aea-3c0d-4536-bddc-571676d739b6" />
+6.
+<img width="516" height="317" alt="image" src="https://github.com/user-attachments/assets/069684e1-db65-48d9-8ad0-40a8f91881a3" />
+
 ## 🎥 Demo Video Link
