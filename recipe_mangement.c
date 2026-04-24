@@ -96,7 +96,29 @@ void deleteRecipe() {
     free(temp);
     printf(" Recipe deleted successfully!\n");
 }
+//update recepie
+void updateRecipe() {
+    int id;
+    printf("Enter Recipe ID to update: ");
+    scanf("%d", &id);
 
+    struct Recipe* temp = head;
+
+    while (temp != NULL) {
+        if (temp->id == id) {
+            printf("\nEnter new Recipe Name: ");
+            scanf(" %[^\n]", temp->name);
+
+            printf("Enter new Ingredients: ");
+            scanf(" %[^\n]", temp->ingredients);
+
+            printf(" Recipe updated successfully!\n");
+            return;
+        }
+        temp = temp->next;
+    }
+
+    printf(" Recipe not found.\n");
 // Main Menu
 int main() {
     int choice;
@@ -107,7 +129,8 @@ int main() {
         printf("2. Display Recipes\n");
         printf("3. Search Recipe\n");
         printf("4. Delete Recipe\n");
-        printf("5. Exit\n");
+        printf("5.update Recipe\n")
+        printf("6. Exit\n");
 
         printf("Enter choice: ");
         scanf("%d", &choice);
@@ -117,7 +140,8 @@ int main() {
             case 2: displayRecipes(); break;
             case 3: searchRecipe(); break;
             case 4: deleteRecipe(); break;
-            case 5: exit(0);
+            case 5:updateRecipe(); break;
+            case 6: exit(0);
             default: printf("Invalid choice!\n");
         }
     }
